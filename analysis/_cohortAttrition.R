@@ -72,7 +72,7 @@ getCohortAttritionViewResults <- function(inclusionResultTable, maxRuleId) {
   return(output)
 }
 
-preparedCohortManifest <- prepManifestForCohortGenerator(getCohortManifest())
+#preparedCohortManifest <- prepManifestForCohortGenerator(getCohortManifest())
 
 target_cohort_ids <- preparedCohortManifest %>%
   filter(str_detect(cohortName, "^Target"))
