@@ -202,7 +202,7 @@ for(strata in (c("all","age_group", "gender_concept_id"))) {
   ###############
   ## TIME TO TREATMENT FROM MBC TO TREATMENT
   ###############
-  for(cohort in c("Target_1A","Target_1B")) {
+  for(cohort in c("Target_1A")) {
     
     target_cohort_2_id <- preparedCohortManifest %>%
       filter(cohortName == cohort) %>%
@@ -243,7 +243,7 @@ for(strata in (c("all","age_group", "gender_concept_id"))) {
   ## EPISODE DATASET
   ###############
   
-  for(cohort in c("Target_1A_initiated_base","Target_1B_initiated_base")) {
+  for(cohort in c("Target_1A_initiated_base")) {
     
     target_cohort_3_id <- preparedCohortManifest %>%
       filter(cohortName == cohort) %>%
@@ -466,7 +466,7 @@ for(strata in (c("all","age_group", "gender_concept_id"))) {
   ###############
   
   target_cohort_ids <- preparedCohortManifest %>%
-    filter(cohortName %in% c("Target_1A_initiated_base", "Target_1B_initiated_base", "Target_1A_initiated_L01", "Target_1B_initiated_L01","Target_1A","Target_1B")) %>%
+    filter(cohortName %in% c("Target_1A_initiated_base", "Target_1A_initiated_L01", "Target_1A")) %>%
     select(cohortId, cohortName)
   
   target <- all_patients %>%
