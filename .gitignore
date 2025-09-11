@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+errorReportSql.txt
+pyenv/
+results/
+data/add_eunomia.R
+runEunomia.R
+.Rprofile
