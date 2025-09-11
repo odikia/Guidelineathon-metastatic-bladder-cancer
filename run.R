@@ -77,7 +77,7 @@ connectionDetails <- DatabaseConnector::createConnectionDetails(
 
 preparedCohortManifest <- prepManifestForCohortGenerator(getCohortManifest())
 
-for(target_cohort in c("1A","1B")){
+for(target_cohort in c("1A")){
   sql_template <- readLines(str_c("sql/Target_",target_cohort,"_initiated_template.sql"))
   sql_template <- paste(sql_template, collapse = "\n")  # Combine into one string
   base_cohort_id <- max(preparedCohortManifest$cohortId) + 1
@@ -210,7 +210,7 @@ if(run_cohort_diagnostics_for_target_cohorts | run_cohort_diagnostics_for_all_co
 
   manifest_to_run <- preparedCohortManifest
 
-  if(!run_cohort_diagnostics_for_all_cohorts) manifest_to_run <-  filter(manifest_to_run, cohortName %in% c("Target_1A", "Target_1B", "Target_1A_initiated_base", "Target_1B_initiated_base", "Target_1A_initiated_L01", "Target_1B_initiated_L01"))
+  if(!run_cohort_diagnostics_for_all_cohorts) manifest_to_run <-  filter(manifest_to_run, cohortName %in% c("Target_1A", "Target_1A_initiated_base", "Target_1A_initiated_L01", "ARTEMIS_bladder_cohort"))
 
   runCohortDiagnostics(
     con = con,

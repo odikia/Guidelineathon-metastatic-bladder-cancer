@@ -106,7 +106,7 @@ episodes <- episodes %>%
 
 
 target_initiated_id <- preparedCohortManifest %>%
-    filter(cohortName == "Target_1A_initiated_base" | cohortName == "Target_1B_initiated_base ") %>%
+    filter(cohortName == "Target_1A_initiated_base") %>%
     pull(cohortId)
 
 for(guideline in c("4","5","6")){
