@@ -155,15 +155,7 @@ FROM
          OP.observation_period_start_date as op_start_date, OP.observation_period_end_date as op_end_date, cast(E.visit_occurrence_id as bigint) as visit_occurrence_id
   FROM 
   (
-  -- Begin Drug Exposure Criteria
---select C.person_id, C.drug_exposure_id as event_id, C.start_date, C.end_date,
---  C.visit_occurrence_id,C.start_date as sort_date
---from 
---(
---  select de.person_id,de.drug_exposure_id,de.drug_concept_id,de.visit_occurrence_id,days_supply,quantity,refills,de.drug_exposure_start_date as start_date, COALESCE(de.drug_exposure_end_date, DATEADD(day,de.days_supply,de.drug_exposure_start_date), DATEADD(day,1,de.drug_exposure_start_date)) as end_date 
---  FROM @cdm_database_schema.DRUG_EXPOSURE de
---JOIN #Codesets cs on (de.drug_concept_id = cs.concept_id and cs.codeset_id = 4)
---) C
+  -- Begin Episode Criteria
 select C.person_id, C.episode_id as event_id, C.episode_start_date as start_date,
        COALESCE(C.EPISODE_END_DATE, DATEADD(day,1,C.EPISODE_START_DATE)) as end_date,
        0 AS visit_occurrence_id,C.EPISODE_START_DATE as sort_date
@@ -175,19 +167,20 @@ from
     ON de.episode_source_value = rc.regName
 ) C
 JOIN @cdm_database_schema.PERSON P on C.person_id = P.person_id
-) C
-
--- End Drug Exposure Criteria
+-- End Episode Criteria
 
   ) E
 	JOIN @cdm_database_schema.observation_period OP on E.person_id = OP.person_id and E.start_date >=  OP.observation_period_start_date and E.start_date <= op.observation_period_end_date
   WHERE DATEADD(day,0,OP.OBSERVATION_PERIOD_START_DATE) <= E.START_DATE AND DATEADD(day,0,E.START_DATE) <= OP.OBSERVATION_PERIOD_END_DATE
+) P
+
 -- End Primary Events
 ) pe
   
 ) QE
 
 ;
+
 
 --- Inclusion Rule Inserts
 
