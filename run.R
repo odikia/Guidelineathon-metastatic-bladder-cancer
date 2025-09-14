@@ -210,7 +210,7 @@ if(run_cohort_diagnostics_for_target_cohorts | run_cohort_diagnostics_for_all_co
 
   manifest_to_run <- preparedCohortManifest
 
-  if(!run_cohort_diagnostics_for_all_cohorts) manifest_to_run <-  filter(manifest_to_run, cohortName %in% c("Target_1A", "Target_1A_initiated_base", "Target_1A_initiated_L01", "ARTEMIS_bladder_cohort"))
+  if(!run_cohort_diagnostics_for_all_cohorts) manifest_to_run <-  filter(manifest_to_run, cohortName %in% c("Target_1A", "Target_1A_initiated_base", "Target_1A_initiated_L01", "ARTEMIS_bladder_cohort") | str_detect(cohortName, "Target_1A_"))
 
   runCohortDiagnostics(
     con = con,
