@@ -15809,7 +15809,7 @@
     "CriteriaList": [
       {
         "DrugExposure": {
-          "CodesetId": 8
+          "CodesetId": 6
         }
       }
     ],
