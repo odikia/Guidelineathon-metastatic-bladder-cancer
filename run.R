@@ -44,7 +44,7 @@ executionSettings <- list(
   cohortTable = "",
   ARTEMISCohortTable = "",
   ARTEMISEpisodeTableName = "" , 
-  regimen_classification_table = "bc_regimen_classifcations"
+  regimen_classification_table = "bc_regimen_classifications"
 )
 
 
